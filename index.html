@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <title>Checkbox Validation</title>
+
+        <script>
+
+            function validate_form()
+            {
+                var vehicle = validate_group("vehicle");
+                var colour = validate_group("colour");
+                var message = 'Form validation failed.\n\n';
+
+                if(!vehicle)
+                {
+                    message = message + 'Please select at least one vehicle.\n';
+                }
+
+                if(!colour)
+                {
+                    message = message + 'Please select at least one colour.\n';
+                }
+
+                if(vehicle && colour)
+                {
+                    message = 'Form validation passed';
+                }
+
+                alert(message);
+            }
+
+            function validate_group(name)
+            {
+                var x = document.getElementsByName(name);
+                var i;
+                var valid = false;
+
+                for(i = 0; i < x.length; i++)
+                {
+                    if(x[i].type == "checkbox")
+                    {
+                        if(x[i].checked)
+                        {
+                            valid = true;
+                            break;
+                        }
+                    }
+                }
+
+                return valid;
+            }
+
+
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <form action="" method="post">
+
+            <fieldset>
+
+                <input type="checkbox" id="vehicle1" name="vehicle" value="Bike">
+                <label for="vehicle1"> Bike</label><br>
+
+                <input type="checkbox" id="vehicle2" name="vehicle" value="Car">
+                <label for="vehicle2"> Car</label><br>
+
+                <input type="checkbox" id="vehicle3" name="vehicle" value="Boat">
+                <label for="vehicle3"> Boat</label><br>
+
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+
+                <input type="checkbox" id="colour1" name="colour" value="Red">
+                <label for="colour1"> Red</label><br>
+
+                <input type="checkbox" id="colour2" name="colour" value="Green">
+                <label for="colour2"> Green</label><br>
+
+                <input type="checkbox" id="colour3" name="colour" value="Blue">
+                <label for="colour3"> Blue</label><br>
+
+            </fieldset>
+
+            <br>
+
+            <button type="button" id="submit" onclick="validate_form()">Submit</button>
+
+        </form>
+
+    </body>
+
+</html>
